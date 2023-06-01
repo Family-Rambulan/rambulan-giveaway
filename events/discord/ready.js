@@ -2,6 +2,8 @@ const register = require("../../utils/slashsync");
 const { ActivityType } = require("discord.js");
 
 module.exports = async (client) => {
+  await client.application?.commands.set([]);
+
   await register(
     client,
     client.register_arr.map((command) => ({
