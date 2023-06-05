@@ -23,7 +23,7 @@ module.exports = async (client) => {
     `[STATUS] ${client.user.tag} is now online!\n[INFO] [Invite Link] ${invite}`
   );
   client.user.setPresence({
-    activities: [{ name: `Tertel`, type: ActivityType.Watching }],
+    activities: [{ name: `Lucifer`, type: ActivityType.Watching }],
     status: "online",
   });
 };
