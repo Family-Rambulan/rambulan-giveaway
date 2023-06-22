@@ -1,10 +1,10 @@
 const config = require("../config.json");
 module.exports = {
   giveaway:
-    (config.everyoneMention ? "<@&1063353345508655174>\n\n" : "") +
+    (config.everyoneMention ? "<@&1104207863292887191>\n\n" : "") +
     "🎉 **GIVEAWAY** 🎉",
   giveawayEnded:
-    (config.everyoneMention ? "<@&1063353345508655174>\n\n" : "") +
+    (config.everyoneMention ? "<@&1104207863292887191>\n\n" : "") +
     "🎉 **GIVEAWAY ENDED** 🎉",
   drawing: `Ends: **{timestamp}**`,
   inviteToParticipate: `React with 🎉 to participate!`,
