@@ -174,7 +174,7 @@ module.exports.run = async (client, message) => {
       }
 
       case !role: {
-        rolereq = m.content.replace(/[@&\/\\#,+()$~%.'":*?<>{}]/g, "");
+        const rolereq = m.content.replace(/[@&\/\\#,+()$~%.'":*?<>{}]/g, "");
 
         if (!(_role = m.guild.roles.cache.get(rolereq)))
           return await failed(
@@ -186,15 +186,18 @@ module.exports.run = async (client, message) => {
           role = _role;
         }
 
+        messages.inviteToParticipate = `**React with 🎉 to participate!**\n>>> - Only members having <@&${rolereq}> are allowed to participate in this giveaway!`;
+
         await client.giveawaysManager.start(channel, {
           prize,
           duration,
           winnerCount,
           hostedBy: client.config.hostedBy ? message.author : null,
+          messages,
           extraData: {
+            server: m.guild.id,
             role: role.id,
           },
-          messages,
         });
 
         posted = true;

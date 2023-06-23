@@ -18,14 +18,9 @@ module.exports.run = async (client, message, args) => {
   // try to found the giveaway with prize then with ID
   let giveaway =
     // Search with giveaway prize
-    (client.giveawaysManager.giveaways.find(
-      (g) => g.prize === args.join(" ")
-    ) &&
-      g.guildId === message.guild.id) ||
+    client.giveawaysManager.giveaways.find((g) => g.prize === args.join(" ")) ||
     // Search with giveaway ID
-    client.giveawaysManager.giveaways.find(
-      (g) => g.messageId === args[0] && g.guildId === message.guild.id
-    );
+    client.giveawaysManager.giveaways.find((g) => g.messageId == args[0]);
 
   // If no giveaway was found
   if (!giveaway) {
@@ -36,7 +31,7 @@ module.exports.run = async (client, message, args) => {
 
   // Reroll the giveaway
   client.giveawaysManager
-    .reroll(giveaway.messageID)
+    .reroll(giveaway.messageId)
     .then(() => {
       // Success message
       message.reply("Giveaway rerolled!");
@@ -44,7 +39,7 @@ module.exports.run = async (client, message, args) => {
     .catch((e) => {
       if (
         e.startsWith(
-          `Giveaway with message ID ${giveaway.messageID} is not ended.`
+          `Giveaway with message ID ${giveaway.messageId} is not ended.`
         )
       ) {
         message.reply("This giveaway is not ended!");
