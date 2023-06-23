@@ -191,7 +191,7 @@ module.exports.run = async (client, message) => {
           duration,
           winnerCount,
           hostedBy: client.config.hostedBy ? message.author : null,
-          extraDate: {
+          extraData: {
             role: role.id,
           },
           messages,
