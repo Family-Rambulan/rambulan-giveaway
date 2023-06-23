@@ -55,6 +55,7 @@ module.exports.run = async (client, message) => {
     channel,
     duration,
     prize,
+    role,
     cancelled,
     posted = false;
 
@@ -166,6 +167,23 @@ module.exports.run = async (client, message) => {
           );
         else {
           duration = _d;
+          await waitingEmbed("Role", "Please send the role ID");
+        }
+
+        break;
+      }
+
+      case !role: {
+        rolereq = m.content.replace(/[@&\/\\#,+()$~%.'":*?<>{}]/g, "");
+
+        if (!(_role = m.guild.roles.cache.get(rolereq)))
+          return await failed(
+            "Please send a valid role ID.",
+            "Role",
+            "Please send the role ID"
+          );
+        else {
+          role = _role;
         }
 
         await client.giveawaysManager.start(channel, {
@@ -173,6 +191,9 @@ module.exports.run = async (client, message) => {
           duration,
           winnerCount,
           hostedBy: client.config.hostedBy ? message.author : null,
+          extraDate: {
+            role: role.id,
+          },
           messages,
         });
 
