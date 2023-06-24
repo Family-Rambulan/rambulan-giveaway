@@ -100,3 +100,8 @@ fs.readdir("./slash/", (_err, files) => {
 
 // Login through the client
 client.login(config.token);
+
+process.on("unhandledRejection", async (err, promise) => {
+  console.error(`[ANTI-CRASH] Unhandled Rejection: ${err}\n`);
+  console.error(promise + "\n");
+});
