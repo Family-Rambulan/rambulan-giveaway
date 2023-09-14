@@ -39,7 +39,8 @@ module.exports = {
       }
       if (
         giveaway.extraData.role !== "null" &&
-        !reactor.roles.cache.get(giveaway.extraData.role)
+        !reactor.roles.cache.get(giveaway.extraData.role) &&
+        !reactor.roles.cache.get("1104207863292887191")
       ) {
         messageReaction.users.remove(reactor.user);
         return reactor
